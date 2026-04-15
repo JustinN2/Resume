@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>My Resume | Personal Portfolio</title>
+  <!-- Google Fonts + modern reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafc;
+      color: #111827;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.92);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #CCCCFF, #7c3aed);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1f2937;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #CCCCFF;
+    }
+
+    /* mobile menu toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #1f2937;
+    }
+
+    section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 80px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e293b, #2d3a4a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #CCCCFF;
+      padding-left: 1rem;
+    }
+
+    .about-text {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #eef2ff;
+      font-size: 1rem;
+      color: #2d3a4a;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .skill-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: 500;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.1s ease, border-color 0.2s;
+    }
+
+    .skill-card i {
+      margin-right: 8px;
+      color: #3838f9;
+    }
+
+    .skill-card:hover {
+      border-color: #CCCCFF;
+      transform: translateY(-2px);
+    }
+
+    .exp-item {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #edf2f7;
+      transition: box-shadow 0.2s;
+    }
+
+    .exp-item h3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-meta {
+      font-size: 0.85rem;
+      color: #4b5563;
+      margin-bottom: 0.6rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid #eef2ff;
+      justify-content: center;
+    }
+
+    .contact-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #f1f5f9;
+      padding: 0.7rem 1.4rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      color: #1e293b;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .contact-card i {
+      font-size: 1.2rem;
+      color: #3838f9;
+    }
+
+    .contact-card:hover {
+      background: #CCCCFF;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .contact-card:hover i {
+      color: white;
+    }
+
+    .form-wrapper {
+      margin-top: 2rem;
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      border: 1px solid #eef2ff;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 0.8rem;
+      border: 1px solid #cbd5e1;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #CCCCFF;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+
+    .btn {
+      background: #3838f9;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+
+    .form-message {
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      color: #6c757d;
+      font-size: 0.85rem;
+    }
+
+    /* empty state helper */
+    .empty-placeholder {
+      color: #9ca3af;
+      font-style: italic;
+      padding: 1rem;
+      text-align: center;
+      border: 1px dashed #d1d5db;
+      border-radius: 1rem;
+      background: #fefce8;
+    }
+
+    @media (max-width: 700px) {
+      .nav-container {
+        flex-direction: row;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 0;
+        margin-top: 0.5rem;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 1.5rem;
+      }
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Justin Ngo</div>
+      <button class="menu-toggle" id="mobileMenuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- = HERO SECTION = -->
+  
+    <div class="hero">
+      <h1>Justin Ngo</h1>
+      <div class="hero-tagline">
+        <i class="fas fa-briefcase"></i> Computer Scientist · 3D Modeler for fun
+      </div>
+    </div>
+
+    <!-- = ABOUT ME SECTION = -->
+    <section id="about">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-text">
+        <p>👋 Hi, I'm Justin. </p>
+        <p style="margin-top: 1rem;">🎓 BS Computer Science (soon) · I love baking, creating 3D models for games and for fun, and creating art.</p>
+      </div>
+    </section>
+
+    <!-- = SKILLS SECTION = -->
+    <section id="skills">
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="skills-grid">
+        <span class="skill-card"><i class="fab fa-js"></i> JavaScript</span>
+        <span class="skill-card"><i class="fab fa-python"></i> Python</span>
+        <span class="skill-card"><i class="fas fa-cloud"></i> Cloud Services</span>
+        <span class="skill-card"><i class="fas fa-database"></i> Databases</span>
+        <span class="skill-card"><i class="fab fa-git-alt"></i> Git & CI/CD</span>
+      </div>
+    </section>
+
+    <!-- = EXPERIENCE SECTION = -->
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      
+      <!-- Experience Item 1 -->
+      <div class="exp-item">
+        <h3>[Job Title] · [Company Name]</h3>
+        <div class="exp-meta">
+          <span><i class="far fa-calendar-alt"></i> [Start Date] – [End Date]</span>
+          <span><i class="fas fa-map-marker-alt"></i> [Location / Remote]</span>
+        </div>
+        <p>• [Describe your key responsibility or achievement]</p>
+        <p>• [Another bullet point highlighting impact]</p>
+      </div>
+      
+      <!-- Experience Item 2 -->
+      <div class="exp-item">
+        <h3>[Another Role] · [Organization]</h3>
+        <div class="exp-meta">
+          <span><i class="far fa-calendar-alt"></i> [Start] – [End]</span>
+          <span><i class="fas fa-map-marker-alt"></i> [Location]</span>
+        </div>
+        <p>• [Achievement or task]</p>
+        <p>• [Another result or learning]</p>
+      </div>
+      
+      <!-- Experience Item 3 -->
+      <div class="exp-item">
+        <h3>[Open Source / Volunteer / Side Project]</h3>
+        <div class="exp-meta">
+          <span><i class="fas fa-code-branch"></i> [Role]</span>
+        </div>
+        <p>• [Describe contribution or outcome]</p>
+      </div>
+    </section>
+
+    <!-- = CONTACT SECTION = -->
+
+    <section id="contact">
+      <h2 class="section-title">Contact & Social</h2>
+      <div class="contact-links">
+        <a href="mailto:justin.ngo2@my.liu.edu" class="contact-card"><i class="fas fa-envelope"></i> justin.ngo2@my.liu.edu</a>
+        <a href="https://github.com/JustinN2" target="_blank" class="contact-card"><i class="fab fa-github"></i> GitHub / JustinN2</a>
+        <a href="https://linkedin.com/in/justin-ngo-873624403/" target="_blank" class="contact-card"><i class="fab fa-linkedin"></i> LinkedIn / Justin Ngo</a>
+      </div>
+
+      <!-- OPTIONAL CONTACT FORM -->
+
+      <div class="form-wrapper">
+        <h3 style="font-weight: 600; margin-bottom: 1rem;"><i class="fas fa-paper-plane"></i> Send me a message</h3>
+        <form id="contactForm" action="https://formspree.io/f/xpqkweay" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Justin Ngo" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="_replyto" placeholder="justin.ngo2@my.liu.edu" required>
+          </div>
+          <div class="form-group">
+            <textarea rows="3" name="message" placeholder="What would you like to say?" required></textarea>
+          </div>
+          <button type="submit" class="btn">Send Message <i class="fas fa-arrow-right"></i></button>
+          <div id="formFeedback" class="form-message"></div>
+        </form>
+      </div>
+    </section>
+    
+    <footer>
+    
+      <p>© 2026 Justin Ngo — Built with HTML/CSS/JS, deployed on Cloudflare Pages. Responsive & HTTPS ready.</p>
+    </footer>
+  </main>
+
+  <script>
+    // = MOBILE MENU TOGGLE & SMOOTH SCROLL =
+    (function() {
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const navLinks = document.getElementById('navLinks');
+      
+      if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('show');
+          const icon = menuBtn.querySelector('i');
+          if (navLinks.classList.contains('show')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+          } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+          }
+        });
+      }
+      
+      // Smooth scroll for all anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId === "#" || targetId === "") return;
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            e.preventDefault();
+            targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // close mobile menu if open
+            if (navLinks && navLinks.classList.contains('show')) {
+              navLinks.classList.remove('show');
+              const icon = menuBtn?.querySelector('i');
+              if (icon) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+              }
+            }
+          }
+        });
+      });
+      
+      const form = document.getElementById('contactForm');
+      const feedbackDiv = document.getElementById('formFeedback');
+      if (form && feedbackDiv) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const formData = new FormData(form);
+          feedbackDiv.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+          feedbackDiv.style.color = '#2563eb';
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+              feedbackDiv.innerHTML = '<i class="fas fa-check-circle"></i> Message sent! I\'ll get back to you soon.';
+              feedbackDiv.style.color = '#10b981';
+              form.reset();
+              setTimeout(() => { feedbackDiv.innerHTML = ''; }, 5000);
+            } else {
+              const errorData = await response.json();
+              feedbackDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${errorData.error || 'Form error. Please try again.'}`;
+              feedbackDiv.style.color = '#ef4444';
+            }
+          } catch (err) {
+            feedbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Network error. Check your connection.';
+            feedbackDiv.style.color = '#ef4444';
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
